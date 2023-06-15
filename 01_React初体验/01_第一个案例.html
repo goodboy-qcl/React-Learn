@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+  <div id="app"></div>
+
+  <!-- 依赖添加 -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+
+    // 渲染 hello world
+    // React18 以前使用 ReactDOM.render
+    // ReactDOM.render(<h2> Hello World </h2>, document.querySelector('#root'))
+
+    // React18 之后
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+    root.render(<h2> Hello World </h2>)
+    const app = ReactDOM.createRoot(document.querySelector('#app'))
+    app.render(<h2> Hello React </h2>)
+  </script>
+</body>
+</html>

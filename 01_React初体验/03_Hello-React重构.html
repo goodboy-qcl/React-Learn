@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- 依赖添加 -->
+  <script src="../lib/react.js"></script>
+  <script src="../lib/react-dom.js"></script>
+  <script src="../lib/babel.js"></script>
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.querySelector('#root'))
+    // let message = 'Hello World'
+    // function btnClick () {
+    //   // 修改数据
+    //   message = 'Hello React'
+    //   // 重新渲染
+    //   rootRender()
+    // }
+    // function rootRender () {
+    //   root.render((
+    //     <div>
+    //       <h2>{ message }</h2>
+    //       <button onClick={ btnClick }> 改变文本 </button>  
+    //     </div>
+    //   ))
+    // }
+    // rootRender()
+
+    // 使用类组件重构
+    class App extends React.Component {
+      // 组件数据
+      constructor () {
+        super()
+        // 响应式数据必须放在 state 里面
+        this.state = {
+          message: 'Hello World',
+        }
+        // 为了在回调函数中使用 this，这个绑定是必不可少的
+        this.changeText = this.changeText.bind(this)
+      }
+
+      // 组件方法
+      changeText () {
+        console.log('changeText', this);
+        // setState 内部做了两件事
+        // 1、改变 message 的值
+        // 2、重新执行 render 函数
+        this.setState({
+          message: 'Hello React'
+        })
+      }
+
+      // 渲染内容
+      render () {
+        return (
+          <div>
+            <h2>{ this.state.message }</h2>
+            <button onClick={ this.changeText }> 改变文本 </button>  
+          </div>
+        )
+      }
+    }
+
+    // 将组件渲染到页面上
+    root.render(<App/>)
+    
+  </script>
+</body>
+</html>
