@@ -12,7 +12,7 @@ class HelloWord extends React.Component {
     return (
       <div>
         <h3>{message}</h3>
-        <div>!!!!!!!</div>
+        <div>!!!!!!</div>
       </div>
     )
   }
